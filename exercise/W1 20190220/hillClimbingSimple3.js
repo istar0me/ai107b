@@ -9,11 +9,15 @@ var dy = 0.01
 
 function hillClimbing(f, x, y) {
     while (true) {
-        console.log('f(%s)=%s', x.toFixed(4), f(x).toFixed(4))
-        if (f(x + dx) >= f(x)) {
+        console.log('f(%s, %s)=%s', x.toFixed(4), y.toFixed(4), f(x, y).toFixed(4))
+        if (f(x + dx, y) >= f(x, y)) {
             x = x + dx
-        } else if (f(x - dx) >= f(x)) {
+        } else if (f(x - dx, y) >= f(x, y)) {
             x = x - dx
+        } else if (f(x, y + dy) >= f(x, y)) {
+            y = y + dx
+        } else if (f(x, y - dy) >= f(x, y)) {
+            y = y - dx
         } else {
             break
         }
